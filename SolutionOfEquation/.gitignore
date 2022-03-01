@@ -1,7 +1,5 @@
-.vs
-Debug
-Release
-packages
-packages.config
-*.sln
-*.vcxproj*
+./
+.vcxproj
+.sln
+.vcxproj.filters
+.c
