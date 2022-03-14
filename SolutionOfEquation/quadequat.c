@@ -24,12 +24,12 @@ root_t Initialization() {
 root_t Solution(double coeff[]) {
 	root_t roots = Initialization();
 	double D = 0.0;
-	if (coeff[2] == 0.0) {
+	if (fabs(coeff[2] - 0.0) < 0.0000001) {
 		roots.x1.realPart = -coeff[1] / coeff[0];
 		return roots;
 	}
 	D = coeff[1] * coeff[1] - 4.0 * coeff[0] * coeff[2];
-	if (D == 0.0) {
+	if (fabs(D - 0.0) < 0.0000001) {
 		roots.x1.realPart = -coeff[1] / (2.0 * coeff[0]);
 		roots.x2.realPart = roots.x1.realPart;
 		return roots;
@@ -53,20 +53,20 @@ void WorkWithClient(double coeff[]) {
 }
 
 void Print(root_t roots) {
-	if (roots.x1.imagPart == roots.x2.imagPart && roots.x1.realPart == roots.x2.realPart && roots.x1.imagPart == 0.0) {
+	if (fabs(roots.x1.imagPart - roots.x2.imagPart) < 0.0000001 && fabs(roots.x1.realPart - roots.x2.realPart) < 0.0000001 && fabs(roots.x1.imagPart - 0.0) < 0.0000001) {
 		printf("\nRoot: %.5f", roots.x1.realPart);
 		return;
 	}
-	if (roots.x1.imagPart == roots.x2.imagPart && roots.x1.realPart == roots.x2.realPart) {
+	if (fabs(roots.x1.imagPart - roots.x2.imagPart) < 0.0000001 && fabs(roots.x1.realPart - roots.x2.realPart) < 0.0000001) {
 		printf("\nRoot: %.5f + %.5fi", roots.x1.realPart, roots.x1.imagPart);
 		return;
 	}
 	printf("\nRoots:");
-	if (roots.x1.imagPart == 0.0)
+	if (fabs(roots.x1.imagPart - 0.0) < 0.0000001)
 		printf("%.5f; ", roots.x1.realPart);
 	else
 		printf("%.5f + %.5fi; ", roots.x1.realPart, roots.x1.imagPart);
-	if (roots.x2.imagPart == 0.0) {
+	if (fabs(roots.x2.imagPart - 0.0) < 0.0000001) {
 		printf("%.5f", roots.x2.realPart);
 		return;
 	}
